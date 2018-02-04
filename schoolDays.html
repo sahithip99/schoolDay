@@ -8,16 +8,16 @@
 <h1 style="font-family:arial;color:#FF3399;" >Is there school today?</h1>
 <h2 style="font-family:arial;color:#FF3399;" >Weather Conditions</h2><br>
 
-Is there snow? <input type ="string" id="snowCheck"></input><br> //snow boolean
-If snow, how many inches? Please put zero when is no snow. <input type ="number" id="inchCheck"></input><br> //snow input
-What is the temperature outside(degrees Fahrenehit)? <input type= "number" id="tempCheck"> &#8457; </input><br> //temp input
+Is there snow? <input type ="string" id="snowCheck"></input><br>
+If snow, how many inches? Please put zero when is no snow. <input type ="number" id="inchCheck"></input><br>
+What is the temperature outside(degrees Fahrenehit)? <input type= "number" id="tempCheck"> &#8457; </input><br>
 
-<h3 style="font-family:arial;color:#FF3399;" >Road Conditions</h3><br>  //Road conditions title
+<h3 style="font-family:arial;color:#FF3399;" >Road Conditions</h3><br>
 
-Is there salt applied? <input type ="string" id="saltCheck"></input><br> //salt input
-Is there a power outage? <input type ="string" id="snowCheck"></input><br> //power boolean
+Is there salt applied? <input type ="string" id="saltCheck"></input><br>
+Is there a power outage? <input type ="string" id="snowCheck"></input><br>
 
-<button type="okButton" onclick = "getValues()"  value = "Calculate">Calculate</button><br>
+<button type="button" onclick = "getValues()" value = "Calculate">Calculate</button><br>
 </body>
 
 <script>
@@ -29,89 +29,49 @@ var salt = "";
 var temp = "";
 
 function getValues(){
-  snow = String(document.getElementById("snowheck").value);
-  inches = Number(document.getElementById("inchCheck").value);  
+  snow = String(document.getElementById("snowCheck").value);
+  inches = Number(document.getElementById("inchCheck").value);
   salt = String(document.getElementById("saltCheck").value);
   temp = Number(document.getElementById("tempCheck").value);
-  
+  checkSnowInch();
+  return this;
 }
 
 function checkSnowInch()
 {
-  if(inchCheck == "yes"){
-    if(inches > 4){
+  if(snow == "yes"){
+    if(inches >= 4){
       schoolCheck = schoolCheck+1;
 }
+      checkTemp();
+
 }
 
 function checkTemp(){
-  if (temp <= 20){
+  if (temp <= 20)
       schoolCheck = schoolCheck+1;
-  else
-  schoolCheck = schoolCheck+0;
   }
+    saltCheck();
+
 }
 
 function saltCheck(){
-  if (salt == "yes"){
-    schoolCheck = schoolCheck+0;
+  if (salt == "no"){
+    schoolCheck = schoolCheck+1;
   }
+    isThereSchool();
 }
 
-<html>
-<head>
-<style>
-</style>
-</head>
-<body>
-<h1 style="font-family:arial;color:#FF3399;" >Is there school today?</h1>
-<h2 style="font-family:arial;color:#FF3399;" >Weather Conditions</h2><br>
-Is there snow? <input type ="string" id="snowCheck"></input><br>
-If snow, how many inches? Please put zero when is no snow. <input type ="number" id="inchCheck"></input><br>
-What is the temperature outside(degrees Fahrenehit)? <input type= "number" id="tempCheck"> &#8457; </input><br>
-<h3 style="font-family:arial;color:#FF3399;" >Road Conditions</h3><br>
-Is there salt applied? <input type ="string" id="saltCheck"></input><br>
-Is there a power outage? <input type ="string" id="snowCheck"></input><br>
-
-<button type="okButton" onclick = "getValues()"  value = "Calculate">Calculate</button><br>
-
-</body>
-
-<script>
-
-document.write("An automatic weather reporter for Drexel students")
-var schoolCheck = 0;
-var snow = "";
-var inches = 0;
-var salt = "";
-var temp = "";
-function getValues(){
-snow = String(document.getElementById("snowheck").value);
-inches = Number(document.getElementById("inchCheck").value);
-salt = String(document.getElementById("saltCheck").value);
+function isThereSchool(){
+if(schoolCheck >=3){
+    document.write("ALERT: Classes are cancelled today");
 }
-
-function checkSnowInch(){
-	if(snow == "yes"){
-	if(inches > 4){
-	schoolCheck = schoolCheck+1;
+else if (schoolCheck>0){
+     document.write("No classes are cancelled today");
 }
-  temperature();
+else{
+     document.write("Please provide valid entries")
 }
-
-function temperature(){
-
-        }
-    }
-
-function weatherConditions(){
-  if(salt == "no"){
-   schoolCheck = schoolCheck+1;
-}
-function IsThereSchool(){
-if(school
 }
 </script>
 </html>
-
-
